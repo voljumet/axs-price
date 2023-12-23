@@ -1,0 +1,16 @@
+version: '3'
+
+networks:
+  alarme_api_network:
+    driver: bridge
+
+services:
+  price_endpoint:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "52801:52801"  # The port your combined app runs on
+    networks:
+      - alarme_api_network
+    restart: unless-stopped
